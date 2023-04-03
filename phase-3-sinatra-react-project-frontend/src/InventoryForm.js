@@ -4,9 +4,7 @@ function InventoryForm(){
 
 
     return (
-        <form id="addInventory">
-            <h2>Add Inventory</h2>
-        </form>
+        <h2>Add Inventory</h2>
     )
 }
 

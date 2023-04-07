@@ -31,8 +31,14 @@ function App() {
   
   return (
     <div className="App">
-      <ShoeStores stores={stores} setStores={setStores}/>
-      <Inventory inventory={inventory} setInventory={setInventory}/>
+      <div id="stores">
+        <h2>Stores:</h2>
+        <ShoeStores stores={stores} setStores={setStores}/>
+      </div>
+      <div id="inventory">
+        <h2>Inventory:</h2>
+        <Inventory inventory={inventory} setInventory={setInventory}/>
+      </div>
       <InventoryForm inventory={inventory} setInventory={setInventory}/>
     </div>
   );

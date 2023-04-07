@@ -1,9 +1,11 @@
+import StoreCard from "./StoreCard";
+
 function ShoeStores({stores, setStores}) {
 
     console.log(stores)
 
     const storeItems = stores.map(store => (
-            <p>{store.name} id: {store.id}</p>
+        <StoreCard key={store.name} store={store} />   
     ))
 
     return(

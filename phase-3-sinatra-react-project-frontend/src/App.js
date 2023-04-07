@@ -4,10 +4,12 @@ import {React, useState, useEffect} from 'react';
 import Inventory from './Inventory';
 import InventoryForm from './InventoryForm';
 import { Route, Routes } from "react-router-dom";
+import ShoeStores from './ShoeStores';
 
 function App() {
 
   const [inventory, setInventory] = useState([])
+  const [stores, setStores] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/inventory")
@@ -17,10 +19,19 @@ function App() {
         console.log(data)
     })
   },[])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/shoe_stores")
+    .then(resp => resp.json())
+    .then(data => {
+        setStores(data)
+        console.log(data)
+    })
+  },[])
   
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <ShoeStores stores={stores} setStores={setStores}/>
       <InventoryForm inventory={inventory} setInventory={setInventory}/>
       <Inventory inventory={inventory} setInventory={setInventory}/>
     </div>

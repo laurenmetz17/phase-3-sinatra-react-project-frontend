@@ -7,10 +7,12 @@ function InventoryForm(inventory,setInventory){
         style : "",
         price : "",
         color : "",
-        store : ""
+        shoe_store_id : ""
     })
 
-    function createShoe(){
+    //implement check for if store exist and create if not add add to existing store id 
+    function createShoe(e){
+        e.preventDefault();       
         fetch('http://localhost:9292/inventory', {
             method: 'POST',
             headers: {
@@ -26,7 +28,6 @@ function InventoryForm(inventory,setInventory){
 
     function updateShoe(e){
         const target = e.target.name;
-
         setInventoryForm({...inventoryForm, [target] : e.target.value})
     }
 

@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import {React} from 'react';
 import ShoeCard from './ShoeCard';
 
 function Inventory({inventory, setInventory}) {
@@ -10,7 +10,7 @@ function Inventory({inventory, setInventory}) {
     ))
 
     return (
-        <h2>{inventoryItems}</h2>
+        <p>{inventoryItems}</p>
     )
     
 

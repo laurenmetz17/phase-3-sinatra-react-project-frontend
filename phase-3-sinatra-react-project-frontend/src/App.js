@@ -32,8 +32,8 @@ function App() {
   return (
     <div className="App">
       <ShoeStores stores={stores} setStores={setStores}/>
-      <InventoryForm inventory={inventory} setInventory={setInventory}/>
       <Inventory inventory={inventory} setInventory={setInventory}/>
+      <InventoryForm inventory={inventory} setInventory={setInventory}/>
     </div>
   );
 }

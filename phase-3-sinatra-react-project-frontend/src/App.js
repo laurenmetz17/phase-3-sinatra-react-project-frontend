@@ -5,6 +5,7 @@ import Inventory from './Inventory';
 import InventoryForm from './InventoryForm';
 import { Route, Routes } from "react-router-dom";
 import ShoeStores from './ShoeStores';
+import StoreForm from './StoreForm';
 
 function App() {
 
@@ -43,7 +44,10 @@ function App() {
           </div>
         </div>
         <div id="forms">
+          <h1>Add Inventory</h1>
           <InventoryForm inventory={inventory} setInventory={setInventory}/>
+          <h1>Add Store</h1>
+          <StoreForm stores={stores} setStores={ShoeStores}/>
         </div>
       </div>
     </div>

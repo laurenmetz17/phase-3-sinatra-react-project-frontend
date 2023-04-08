@@ -31,15 +31,21 @@ function App() {
   
   return (
     <div className="App">
-      <div id="stores">
-        <h2>Stores:</h2>
-        <ShoeStores stores={stores} setStores={setStores}/>
+      <div id="float-container">
+        <div id="display">
+          <div id="stores">
+            <h2>Stores:</h2>
+            <ShoeStores stores={stores} setStores={setStores}/>
+          </div>
+          <div id="inventory">
+            <h2>Inventory:</h2>
+            <Inventory inventory={inventory} setInventory={setInventory}/>
+          </div>
+        </div>
+        <div id="forms">
+          <InventoryForm inventory={inventory} setInventory={setInventory}/>
+        </div>
       </div>
-      <div id="inventory">
-        <h2>Inventory:</h2>
-        <Inventory inventory={inventory} setInventory={setInventory}/>
-      </div>
-      <InventoryForm inventory={inventory} setInventory={setInventory}/>
     </div>
   );
 }

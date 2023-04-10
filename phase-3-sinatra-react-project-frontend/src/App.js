@@ -11,6 +11,7 @@ function App() {
 
   const [inventory, setInventory] = useState([])
   const [stores, setStores] = useState([])
+  const [totalInventory, setTotalInventory] = useState(0)
 
   useEffect(() => {
     fetch("http://localhost:9292/inventory")
@@ -39,7 +40,7 @@ function App() {
             <ShoeStores stores={stores} setStores={setStores}/>
           </div>
           <div id="inventory">
-            <h2>Inventory:</h2>
+            <h2>Inventory: {totalInventory}</h2>
             <Inventory inventory={inventory} setInventory={setInventory}/>
           </div>
         </div>

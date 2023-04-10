@@ -7,7 +7,7 @@ function InventoryForm(inventory,setInventory){
         style : "",
         price : "",
         color : "",
-        shoe_store_id : ""
+        shoe_store : ""
     })
 
     //implement check for if store exist and create if not add add to existing store id 

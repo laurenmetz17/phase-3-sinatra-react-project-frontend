@@ -1,13 +1,13 @@
 import {React, useState} from 'react';
 
-function InventoryForm(inventory,setInventory){
+function InventoryForm(inventory,setInventory,stores, setTotalInventory){
 
     const [inventoryForm, setInventoryForm] = useState({
         name: "",
         style : "",
-        price : "",
+        price : '',
         color : "",
-        shoe_store : ""
+        shoe_store_id: ''
     })
 
     //implement check for if store exist and create if not add add to existing store id 
@@ -22,8 +22,11 @@ function InventoryForm(inventory,setInventory){
             })
             .then(resp => resp.json())
             .then((newShoe) => {
+                console.log(newShoe)
                 setInventory([...inventory, newShoe]);
             });
+
+            setTotalInventory(inventory.length)
     }
 
     function updateShoe(e){
@@ -31,6 +34,10 @@ function InventoryForm(inventory,setInventory){
         setInventoryForm({...inventoryForm, [target] : e.target.value})
     }
 
+    //console.log(Object.keys(stores))
+    //const storeMenu = stores.forEach(store => {
+        //<option value={store.name}>{store.name}</option>
+    //})
 
     return (
         <form id="entry" onSubmit={createShoe} >
@@ -39,11 +46,14 @@ function InventoryForm(inventory,setInventory){
             <h2>Style :</h2>
             <input type="text" name="style" onChange= {updateShoe} />
             <h2>Price :</h2>
-            <input type="text" name='prive' onChange={updateShoe} />
+            <input type="number" name='price' onChange={updateShoe} />
             <h2>Color :</h2>
             <input type="text" name='color' onChange={updateShoe} />
             <h2>Store Name</h2>
-            <input type="text" name='store' onChange={updateShoe} />
+            <select id="store" name="store_name" size="3">
+                {}
+            </select>
+            <input type="number" name='store' onChange={updateShoe} />
             <input type="submit" value="Submit"  />
         </form>
     )

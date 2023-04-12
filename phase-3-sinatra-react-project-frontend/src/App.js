@@ -19,6 +19,7 @@ function App() {
     .then(data => {
         setInventory(data)
         console.log(data)
+        setTotalInventory(data.length)
     })
   },[])
 
@@ -30,6 +31,8 @@ function App() {
         console.log(data)
     })
   },[])
+
+
   
   return (
     <div className="App">
@@ -41,12 +44,12 @@ function App() {
           </div>
           <div id="inventory">
             <h2>Inventory: {totalInventory}</h2>
-            <Inventory inventory={inventory} setInventory={setInventory}/>
+            <Inventory inventory={inventory} setInventory={setInventory} setTotalInventory={setTotalInventory}/>
           </div>
         </div>
         <div id="forms">
           <h1>Add Inventory</h1>
-          <InventoryForm inventory={inventory} setInventory={setInventory}/>
+          <InventoryForm inventory={inventory} setInventory={setInventory} stores={stores}/>
           <h1>Add Store</h1>
           <StoreForm stores={stores} setStores={ShoeStores}/>
         </div>

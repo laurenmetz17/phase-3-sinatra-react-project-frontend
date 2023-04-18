@@ -49,7 +49,7 @@ function App() {
         </div>
         <div id="forms">
           <h1>Add Inventory</h1>
-          <InventoryForm inventory={inventory} setInventory={setInventory} stores={stores}/>
+          <InventoryForm inventory={inventory} setInventory={setInventory} stores={stores} setTotalInventory={setTotalInventory}/>
           <h1>Add Store</h1>
           <StoreForm stores={stores} setStores={ShoeStores}/>
         </div>

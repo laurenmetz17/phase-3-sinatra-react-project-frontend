@@ -25,8 +25,6 @@ function InventoryForm(inventory,setInventory,stores, setTotalInventory){
                 console.log(newShoe)
                 setInventory([...inventory, newShoe]);
             });
-
-            setTotalInventory(inventory.length)
     }
 
     function updateShoe(e){

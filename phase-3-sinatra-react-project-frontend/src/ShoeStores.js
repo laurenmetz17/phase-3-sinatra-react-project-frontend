@@ -2,7 +2,7 @@
 import {React, useEffect} from 'react';
 import ShoeCard from "./ShoeCard";
 
-function ShoeStores({stores, setStores, inventory, setInventory}) {
+function ShoeStores({stores, setStores, inventory, setInventory, totalInventory, setTotalInventory}) {
 
     useEffect(() => {
         fetch("http://localhost:9292/shoe_stores")
@@ -15,8 +15,22 @@ function ShoeStores({stores, setStores, inventory, setInventory}) {
     console.log(inventory)
 
     function setSelect(event) {
-        let store = stores.filter(store => store.name == event.target.value)
-        console.log(store[0].id)
+        if(event.target.value == "All") {
+            console.log("all")
+            fetch("http://localhost:9292/shoes")
+            .then(resp => resp.json())
+            .then(data => {
+                setInventory(data)
+                setTotalInventory(data.length)
+            })
+        }
+        else {
+            let store = stores.filter(store => store.name == event.target.value)
+            console.log(store[0])
+            console.log(store[0].shoes)
+            setInventory(store[0].shoes)
+            setTotalInventory(store[0].shoes.length)
+        }
     }
 
     //add filter for selected store
@@ -32,6 +46,7 @@ function ShoeStores({stores, setStores, inventory, setInventory}) {
 
     return(
         <div>
+            <h2>Total Inventory: {totalInventory} </h2>
             <select onChange={setSelect}>
                 <option value="All" name="all">All</option>
                 {storeItems}

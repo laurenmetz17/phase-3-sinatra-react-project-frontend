@@ -1,9 +1,8 @@
 import {React, useEffect} from 'react';
 import ShoeCard from './ShoeCard';
 
-function Inventory({inventory, setInventory, setTotalInventory}) {
+function Inventory({inventory, setInventory, selectedStore, setTotalInventory}) {
 
-    console.log(inventory)
     useEffect(() => {
         fetch("http://localhost:9292/inventory")
         .then(resp => resp.json())
@@ -11,7 +10,7 @@ function Inventory({inventory, setInventory, setTotalInventory}) {
             setInventory(data)
             setTotalInventory(inventory.length)
         })
-      },[inventory])
+    },[])
 
     const inventoryItems = inventory.map(shoe => (
         <ShoeCard key={shoe.name} shoe={shoe} />

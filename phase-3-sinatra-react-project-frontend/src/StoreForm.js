@@ -18,7 +18,6 @@ function StoreForm({stores,setStores}) {
             })
             .then(resp => resp.json())
             .then((newStore) => {
-                console.log(typeof newStore)
                 setStores([...stores, newStore]);
             });
 

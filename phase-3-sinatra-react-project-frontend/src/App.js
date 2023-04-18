@@ -12,14 +12,13 @@ function App() {
   const [inventory, setInventory] = useState([])
   const [stores, setStores] = useState([])
   const [totalInventory, setTotalInventory] = useState(0)
-  const [selectedStore, setSelectedStore] = useState("")
+  const [selectedStore, setSelectedStore] = useState("All")
 
   useEffect(() => {
     fetch("http://localhost:9292/inventory")
     .then(resp => resp.json())
     .then(data => {
         setInventory(data)
-        console.log(data)
         setTotalInventory(data.length)
     })
   },[])
@@ -29,7 +28,6 @@ function App() {
     .then(resp => resp.json())
     .then(data => {
         setStores(data)
-        console.log(data)
     })
   },[])
 
@@ -41,11 +39,11 @@ function App() {
         <div id="display">
           <div id="stores">
             <h2>Stores:</h2>
-            <ShoeStores stores={stores} setStores={setStores} selectedStore={selectedStore} setSelectedStore={setSelectedStore}/>
+            <ShoeStores stores={stores} setStores={setStores} selectedStore={selectedStore} setSelectedStore={setSelectedStore} setInventory={setInventory} setTotalInventory={setTotalInventory} inventory={inventory}/>
           </div>
           <div id="inventory">
             <h2>Inventory: {totalInventory}</h2>
-            <Inventory inventory={inventory} setInventory={setInventory} setTotalInventory={setTotalInventory}/>
+            <Inventory inventory={inventory} setInventory={setInventory} setTotalInventory={setTotalInventory} selectedStore={selectedStore}/>
           </div>
         </div>
         <div id="forms">

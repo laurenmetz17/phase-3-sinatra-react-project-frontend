@@ -6,6 +6,7 @@ import InventoryForm from './InventoryForm';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ShoeStores from './ShoeStores';
 import StoreForm from './StoreForm';
+import NavBar from './Navbar';
 
 function App() {
 
@@ -34,12 +35,15 @@ function App() {
 
   
   return (
+    <div className="App">
       <BrowserRouter>
+        <NavBar/>
         <Routes>
           <Route path="/" element={<ShoeStores stores={stores} setStores={setStores} selectedStore={selectedStore} setSelectedStore={setSelectedStore} setInventory={setInventory} setTotalInventory={setTotalInventory} inventory={inventory}/>}/>
-          <Route path="/add" element={<StoreForm stores={stores} setStores={ShoeStores}/>}/>
+          <Route path="/add" element={<StoreForm stores={stores} setStores={setStores}/>}/>
         </Routes>
       </BrowserRouter>
+    </div>
   );
 }
 

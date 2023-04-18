@@ -1,7 +1,8 @@
-import StoreCard from "./StoreCard";
-import {React, useEffect} from 'react';
 
-function ShoeStores({stores, setStores}) {
+import {React, useEffect} from 'react';
+import ShoeCard from "./ShoeCard";
+
+function ShoeStores({stores, setStores, inventory, setInventory}) {
 
     useEffect(() => {
         fetch("http://localhost:9292/shoe_stores")
@@ -11,16 +12,22 @@ function ShoeStores({stores, setStores}) {
         })
       },[]);
 
+    console.log(inventory)
+
     function setSelect(event) {
         let store = stores.filter(store => store.name == event.target.value)
-        console.log(store[0])
+        console.log(store[0].id)
     }
 
     //add filter for selected store
 
     const storeItems = stores.map(store => (
-        <option value={store.name}>{store.name}</option>
+        <option key={store.name} value={store.name}>{store.name}</option>
         //<StoreCard key={store.name} store={store} />   
+    ))
+
+    const inventoryItems = inventory.map(shoe => (
+        <ShoeCard key={shoe.name} shoe={shoe} />
     ))
 
     return(
@@ -29,6 +36,7 @@ function ShoeStores({stores, setStores}) {
                 <option value="All" name="all">All</option>
                 {storeItems}
             </select>
+            {inventoryItems}
         </div>
     )
 }

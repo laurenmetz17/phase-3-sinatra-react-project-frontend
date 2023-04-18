@@ -13,7 +13,7 @@ function InventoryForm(inventory,setInventory,stores){
     //implement check for if store exist and create if not add add to existing store id 
     function createShoe(e){
         e.preventDefault();       
-        fetch('http://localhost:9292/inventory', {
+        fetch('http://localhost:9292/shoes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

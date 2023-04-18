@@ -4,7 +4,7 @@ import ShoeCard from './ShoeCard';
 function Inventory({inventory, setInventory, selectedStore, setTotalInventory}) {
 
     useEffect(() => {
-        fetch("http://localhost:9292/inventory")
+        fetch("http://localhost:9292/shoes")
         .then(resp => resp.json())
         .then(data => {
             setInventory(data)

@@ -1,7 +1,7 @@
 import {React, useEffect} from 'react';
 import ShoeCard from './ShoeCard';
 
-function Inventory({inventory, setInventory}) {
+function Inventory({inventory, setInventory, setTotalInventory}) {
 
     console.log(inventory)
     useEffect(() => {
@@ -9,7 +9,7 @@ function Inventory({inventory, setInventory}) {
         .then(resp => resp.json())
         .then(data => {
             setInventory(data)
-            console.log(data)
+            setTotalInventory(inventory.length)
         })
       },[inventory])
 

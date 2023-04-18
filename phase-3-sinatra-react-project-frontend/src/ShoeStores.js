@@ -1,7 +1,7 @@
 import StoreCard from "./StoreCard";
 import {React, useEffect} from 'react';
 
-function ShoeStores({stores, setStores}) {
+function ShoeStores({stores, setStores, setSelectedStore}) {
 
     useEffect(() => {
         fetch("http://localhost:9292/shoe_stores")
@@ -10,14 +10,22 @@ function ShoeStores({stores, setStores}) {
             setStores(data)
             console.log(data)
         })
-      },[stores])
+      },[stores]);
+    
+
+    function setSelect(e) {
+        setSelectedStore(e.target.value)
+    }
 
     const storeItems = stores.map(store => (
-        <StoreCard key={store.name} store={store} />   
+        <option value={store.name}>{store.name}</option>
+        //<StoreCard key={store.name} store={store} />   
     ))
 
     return(
-        <div>{storeItems}</div>
+        <div>
+            <select onChange={setSelect}>{storeItems}</select>
+        </div>
     )
 }
 

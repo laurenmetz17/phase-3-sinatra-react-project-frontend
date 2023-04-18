@@ -12,6 +12,7 @@ function App() {
   const [inventory, setInventory] = useState([])
   const [stores, setStores] = useState([])
   const [totalInventory, setTotalInventory] = useState(0)
+  const [selectedStore, setSelectedStore] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:9292/inventory")
@@ -40,7 +41,7 @@ function App() {
         <div id="display">
           <div id="stores">
             <h2>Stores:</h2>
-            <ShoeStores stores={stores} setStores={setStores}/>
+            <ShoeStores stores={stores} setStores={setStores} selectedStore={selectedStore} setSelectedStore={setSelectedStore}/>
           </div>
           <div id="inventory">
             <h2>Inventory: {totalInventory}</h2>

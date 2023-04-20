@@ -2,9 +2,9 @@ import { NavLink} from "react-router-dom";
 
 function NavBar (){
 
-    const aboutActive = true;
-    const entryActive = false;
-    const playlistActive = false;
+    let storesActive = true;
+    let entryActive = false;
+    let playlistActive = false;
     const linkStyles = {
         display: "inline-block",
         width: "31.2%",
@@ -26,8 +26,8 @@ function NavBar (){
         <div id="links">
             <NavLink to="/" exact="true" style={window.location.href === "http://localhost:3001/" || window.location.href === "http://localhose:3001"? activeStyles :linkStyles}  
             onClick={() => {
-                if(aboutActive !== true) {
-                aboutActive = !aboutActive;
+                if(storesActive !== true) {
+                storesActive = !storesActive
                 playlistActive = false;
                 entryActive = false;
             }}}>Stores</NavLink>
@@ -36,7 +36,7 @@ function NavBar (){
                 if(entryActive !== true) {
                 entryActive = !entryActive;
                 playlistActive = false;
-                aboutActive = false;
+                storesActive = false;
             }}}>Create</NavLink>
         </div>
     )

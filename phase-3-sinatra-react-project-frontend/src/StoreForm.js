@@ -1,4 +1,5 @@
 import {React, useState} from 'react';
+import InventoryForm from './InventoryForm';
 
 function StoreForm({stores,setStores}) {
 
@@ -29,13 +30,20 @@ function StoreForm({stores,setStores}) {
     }
 
     return (
-        <form id="entry" onSubmit={createStore} >
-            <h2>Name :</h2>
-            <input type="text" name="name" onChange={updateStore} />
-            <h2>Address :</h2>
-            <input type="text" name="address" onChange= {updateStore} />
-            <input type="submit" value="Submit"  />
-        </form>
+        <div id="forms">
+            <form id="entry" onSubmit={createStore} >
+                <h1>Add Store:</h1>
+                <h2>Name :</h2>
+                <input type="text" name="name" onChange={updateStore} />
+                <h2>Address :</h2>
+                <input type="text" name="address" onChange= {updateStore} />
+                <input type="submit" value="Submit"  />
+            </form>
+            <h1>Add Inventory:</h1>
+            <InventoryForm/>
+        </div>
+
+
     )
 }
 

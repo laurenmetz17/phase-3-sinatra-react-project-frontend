@@ -22,6 +22,9 @@ function StoreForm({stores,setStores}) {
                 setStores([...stores, newStore]);
             });
 
+            e.target.children[2].value = ""
+            e.target.children[4].value = ""
+
     }
 
     function updateStore(e) {

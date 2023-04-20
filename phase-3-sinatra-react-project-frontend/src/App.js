@@ -40,7 +40,7 @@ function App() {
         <NavBar/>
         <Routes>
           <Route path="/" element={<ShoeStores stores={stores} setStores={setStores} selectedStore={selectedStore} setSelectedStore={setSelectedStore} setInventory={setInventory} totalInventory={totalInventory} setTotalInventory={setTotalInventory} inventory={inventory}/>}/>
-          <Route path="/add" element={<StoreForm stores={stores} setStores={setStores}/>}/>
+          <Route path="/add" element={<StoreForm stores={stores} setStores={setStores} inventory={inventory} setInventory={setInventory}/>}/>
         </Routes>
       </BrowserRouter>
     </div>

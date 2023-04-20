@@ -1,6 +1,6 @@
 import {React, useState} from 'react';
 
-function InventoryForm(inventory,setInventory,stores){
+function InventoryForm({inventory,setInventory,stores}){
 
     const [inventoryForm, setInventoryForm] = useState({
         name: "",
@@ -25,24 +25,18 @@ function InventoryForm(inventory,setInventory,stores){
                 console.log(newShoe)
                 setInventory([...inventory, newShoe]);
             });
-        setInventoryForm({
-            name: "",
-            style : "",
-            price : '',
-            color : "",
-            shoe_store_id: ''
-        })
+
+            e.target.children[1].value = ""
+            e.target.children[3].value = ""
+            e.target.children[5].value = ""
+            e.target.children[7].value = ""
+            e.target.children[9].value = null
     }
 
     function updateShoe(e){
         const target = e.target.name;
         setInventoryForm({...inventoryForm, [target] : e.target.value})
     }
-
-    //console.log(Object.keys(stores))
-    //const storeMenu = stores.forEach(store => {
-        //<option value={store.name}>{store.name}</option>
-    //})
 
     return (
         <form id="entry" onSubmit={createShoe} >

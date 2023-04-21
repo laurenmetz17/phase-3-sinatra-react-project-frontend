@@ -7,8 +7,13 @@ function InventoryForm({inventory,setInventory,stores}){
         style : "",
         price : '',
         color : "",
-        shoe_store_id: ''
+        shoe_store_id: null
     })
+
+    const storeItems = stores.map(store => (
+        <option key={store.name} value={store.id}>{store.name}</option>
+    ))
+    console.log(storeItems)
 
     //implement check for if store exist and create if not add add to existing store id 
     function createShoe(e){
@@ -30,11 +35,18 @@ function InventoryForm({inventory,setInventory,stores}){
             e.target.children[3].value = ""
             e.target.children[5].value = ""
             e.target.children[7].value = ""
-            e.target.children[9].value = null
+            console.log(e.target.children[9].value)
     }
 
     function updateShoe(e){
         const target = e.target.name;
+        setInventoryForm({...inventoryForm, [target] : e.target.value})
+    }
+
+    function chooseStore(e) {
+        console.log(e.target.value)
+        const target = e.target.name;
+        console.log(target)
         setInventoryForm({...inventoryForm, [target] : e.target.value})
     }
 
@@ -49,10 +61,9 @@ function InventoryForm({inventory,setInventory,stores}){
             <h2>Color :</h2>
             <input type="text" name='color' onChange={updateShoe} />
             <h2>Store Name</h2>
-            <select id="store" name="store_name" size="3">
-                {}
+            <select name="shoe_store_id" onChange={chooseStore}>
+                {storeItems}
             </select>
-            <input type="number" name='store' onChange={updateShoe} />
             <input type="submit" value="Submit"  />
         </form>
     )

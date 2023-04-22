@@ -15,7 +15,21 @@ function ShoeCard({stores, shoe, inventory, setInventory}) {
     }
 
     function changePrice(e) {
-        e.preventDefault()
+        //e.preventDefault()
+
+        fetch(`http://localhost:9292/shoes/${shoe.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({price: e.target.children[0].value}),
+            })
+            .then(resp => resp.json())
+            .then((newShoe) => {
+                console.log(newShoe)   
+                setInventory((inventory) => inventory)         
+            });
+
     }
 
     return (

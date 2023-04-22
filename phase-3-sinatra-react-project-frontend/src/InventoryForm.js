@@ -7,15 +7,13 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
         style : "",
         price : '',
         color : "",
-        shoe_store_id: null
+        shoe_store_id: 0
     })
 
     const storeItems = stores.map(store => (
         <option key={store.name} value={store.id}>{store.name}</option>
     ))
-    console.log(storeItems)
 
-    //implement check for if store exist and create if not add add to existing store id 
     function createShoe(e){
         e.preventDefault();       
         fetch('http://localhost:9292/shoes', {
@@ -51,6 +49,7 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
         const target = e.target.name;
         console.log(target)
         setInventoryForm({...inventoryForm, [target] : e.target.value})
+        console.log(inventoryForm)
     }
 
     return (

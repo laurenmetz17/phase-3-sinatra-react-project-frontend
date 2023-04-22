@@ -12,11 +12,8 @@ function ShoeStores({stores, setStores, inventory, setInventory, totalInventory,
         })
       },[]);
 
-    console.log(inventory)
-
     function setSelect(event) {
         if(event.target.value == "All") {
-            console.log("all")
             fetch("http://localhost:9292/shoes")
             .then(resp => resp.json())
             .then(data => {
@@ -26,18 +23,13 @@ function ShoeStores({stores, setStores, inventory, setInventory, totalInventory,
         }
         else {
             let store = stores.filter(store => store.name == event.target.value)
-            console.log(store[0])
-            console.log(store[0].shoes)
             setInventory(store[0].shoes)
             setTotalInventory(store[0].shoes.length)
         }
     }
 
-    //add filter for selected store
-
     const storeItems = stores.map(store => (
-        <option key={store.name} value={store.name}>{store.name}</option>
-        //<StoreCard key={store.name} store={store} />   
+        <option key={store.name} value={store.name}>{store.name}</option>  
     ))
 
     const inventoryItems = inventory.map(shoe => (
@@ -47,6 +39,7 @@ function ShoeStores({stores, setStores, inventory, setInventory, totalInventory,
     return(
         <div>
             <h2>Total Inventory: {totalInventory} </h2>
+            <h3>Stores:</h3>
             <select onChange={setSelect}>
                 <option value="All" name="all">All</option>
                 {storeItems}

@@ -29,7 +29,6 @@ function ShoeCard({stores, shoe, inventory, setInventory, setTotalInventory, tot
                 console.log(newShoe)   
                 setInventory((inventory) => inventory)         
             });
-
     }
 
     return (

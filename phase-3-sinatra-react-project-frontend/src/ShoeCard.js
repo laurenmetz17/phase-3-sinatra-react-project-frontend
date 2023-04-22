@@ -1,16 +1,23 @@
-function ShoeCard({stores, shoe}) {
+function ShoeCard({stores, shoe, inventory, setInventory}) {
 
     let store = stores.filter(store => store.id == shoe.shoe_store_id)
-    console.log(store)
 
     function handleDelete(e) {
-        
+        const newInventory = inventory.filter(item => item.id != shoe.id)
+        fetch(`http://localhost:9292/shoes/${shoe.id}`, {
+            method: 'DELETE',
+            })
+            .then(resp => resp.json())
+            .then(() => {
+                setInventory(newInventory)
+                
+            });
     }
 
     return (
         <div>
             <p>{shoe.name}, style: {shoe.style}, price: {shoe.price} color: {shoe.color} store: {store[0].name}</p>
-            <button name="delete" onClick={handleDelete}>X</button>
+            <button name="delete" id={store[0].id} onClick={handleDelete}>X</button>
         </div>
        
     )

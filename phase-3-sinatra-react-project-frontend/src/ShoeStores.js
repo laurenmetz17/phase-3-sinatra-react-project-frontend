@@ -41,7 +41,7 @@ function ShoeStores({stores, setStores, inventory, setInventory, totalInventory,
     ))
 
     const inventoryItems = inventory.map(shoe => (
-        <ShoeCard key={shoe.name} shoe={shoe} stores={stores} setInventory={setInventory} inventory={inventory}/>
+        <ShoeCard key={shoe.name} shoe={shoe} stores={stores} setInventory={setInventory} inventory={inventory} setTotalInventory={setTotalInventory} totalInventory={totalInventory}/>
     ))
 
     return(

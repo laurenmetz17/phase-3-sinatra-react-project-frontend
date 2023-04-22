@@ -1,4 +1,4 @@
-function ShoeCard({stores, shoe, inventory, setInventory}) {
+function ShoeCard({stores, shoe, inventory, setInventory, setTotalInventory, totalInventory}) {
 
     let store = stores.filter(store => store.id == shoe.shoe_store_id)
 
@@ -10,12 +10,12 @@ function ShoeCard({stores, shoe, inventory, setInventory}) {
             .then(resp => resp.json())
             .then(() => {
                 setInventory(newInventory)
+                setTotalInventory(totalInventory-1)
                 
             });
     }
 
     function changePrice(e) {
-        //e.preventDefault()
 
         fetch(`http://localhost:9292/shoes/${shoe.id}`, {
             method: 'PATCH',

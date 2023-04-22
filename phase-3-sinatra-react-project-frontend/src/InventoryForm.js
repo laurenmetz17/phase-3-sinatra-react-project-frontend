@@ -1,6 +1,6 @@
 import {React, useState} from 'react';
 
-function InventoryForm({inventory,setInventory,stores, setTotalInventory}){
+function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalInventory}){
 
     const [inventoryForm, setInventoryForm] = useState({
         name: "",
@@ -29,6 +29,7 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory}){
             .then((newShoe) => {
                 console.log(newShoe)
                 setInventory([...inventory, newShoe]);
+                setTotalInventory(totalInventory+1)
                 
             });
 

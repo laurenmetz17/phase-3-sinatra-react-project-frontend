@@ -1,7 +1,7 @@
 import {React, useState} from 'react';
 import InventoryForm from './InventoryForm';
 
-function StoreForm({stores,setStores, inventory, setInventory}) {
+function StoreForm({stores,setStores, inventory, setInventory, setTotalInventory}) {
 
     const [storeForm, setStoreForm] = useState({
         name: "",
@@ -43,7 +43,7 @@ function StoreForm({stores,setStores, inventory, setInventory}) {
                 <input type="submit" value="Submit"  />
             </form>
             <h1>Add Inventory:</h1>
-            <InventoryForm inventory={inventory} setInventory={setInventory} stores={stores}/>
+            <InventoryForm inventory={inventory} setInventory={setInventory} stores={stores} setTotalInventory={setTotalInventory}/>
         </div>
 
 

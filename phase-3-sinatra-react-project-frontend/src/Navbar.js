@@ -31,7 +31,7 @@ function NavBar (){
                 playlistActive = false;
                 entryActive = false;
             }}}>Stores</NavLink>
-            <NavLink to="/add" exact="true" style={window.location.pathname === "/add" ? activeStyles :linkStyles} 
+            <NavLink to="/new" exact="true" style={window.location.pathname === "/new" ? activeStyles :linkStyles} 
             onClick={() => {
                 if(entryActive !== true) {
                 entryActive = !entryActive;

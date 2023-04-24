@@ -11,7 +11,7 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
     })
 
     const storeItems = stores.map(store => (
-        <option key={store.name} value={store.id}>{store.name}</option>
+        <option key={store.id} value={store.id}>{store.name}</option>
     ))
 
     function createShoe(e){
@@ -35,7 +35,7 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
             e.target.children[3].value = ""
             e.target.children[5].value = ""
             e.target.children[7].value = ""
-            console.log(e.target.children[9].value)
+            console.log(typeof(parseInt(e.target.children[9].value)))
             setTotalInventory(inventory.length)
     }
 
@@ -48,9 +48,10 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
         console.log(e.target.value)
         const target = e.target.name;
         console.log(target)
-        setInventoryForm({...inventoryForm, [target] : e.target.value})
+        setInventoryForm({...inventoryForm, shoe_store_id : e.target.value})
         console.log(inventoryForm)
     }
+    
 
     return (
         <form id="entry" onSubmit={createShoe} >
@@ -63,7 +64,7 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
             <h2>Color :</h2>
             <input type="text" name='color' onChange={updateShoe} />
             <h2>Store Name</h2>
-            <select name="shoe_store_id" onChange={chooseStore}>
+            <select type="number" name="shoe_store_id" onChange={chooseStore}>
                 {storeItems}
             </select>
             <input type="submit" value="Submit"  />

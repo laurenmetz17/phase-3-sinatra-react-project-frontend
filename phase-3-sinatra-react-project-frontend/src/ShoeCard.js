@@ -33,7 +33,7 @@ function ShoeCard({stores, shoe, inventory, setInventory, setTotalInventory, tot
 
     return (
         <div>
-            <p>{shoe.name}, style: {shoe.style}, price: {shoe.price} color: {shoe.color} store: {store[0].name}</p>
+            <p>{shoe.name}, style: {shoe.style}, price: {shoe.price}, color: {shoe.color}, store: {store[0].name}</p>
             <button name="delete" id={store[0].id} onClick={handleDelete}>X</button>
             <form onSubmit={changePrice}>
                 <input name="edit-price" type="number"></input>

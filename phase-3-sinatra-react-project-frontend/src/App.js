@@ -1,8 +1,6 @@
 
 import './App.css';
 import {React, useState, useEffect} from 'react';
-import Inventory from './Inventory';
-import InventoryForm from './InventoryForm';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ShoeStores from './ShoeStores';
 import StoreForm from './StoreForm';

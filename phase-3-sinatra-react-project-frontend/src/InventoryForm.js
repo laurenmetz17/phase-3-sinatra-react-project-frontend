@@ -25,7 +25,6 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
             })
             .then(resp => resp.json())
             .then((newShoe) => {
-                console.log(newShoe)
                 setInventory([...inventory, newShoe]);
                 setTotalInventory(totalInventory+1)
                 
@@ -35,7 +34,6 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
             e.target.children[3].value = ""
             e.target.children[5].value = ""
             e.target.children[7].value = ""
-            console.log(typeof(parseInt(e.target.children[9].value)))
             setTotalInventory(inventory.length)
     }
 
@@ -45,11 +43,8 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
     }
 
     function chooseStore(e) {
-        console.log(e.target.value)
         const target = e.target.name;
-        console.log(target)
         setInventoryForm({...inventoryForm, shoe_store_id : e.target.value})
-        console.log(inventoryForm)
     }
     
 

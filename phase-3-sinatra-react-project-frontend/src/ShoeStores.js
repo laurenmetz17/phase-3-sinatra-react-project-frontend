@@ -14,11 +14,12 @@ function ShoeStores({stores, setStores, inventory, setInventory, totalInventory,
 
     function setSelect(event) {
         if(event.target.value == "All") {
-            fetch("http://localhost:9292/shoes")
+            fetch("http://localhost:9292/shoe_stores")
             .then(resp => resp.json())
             .then(data => {
-                setInventory(data)
-                setTotalInventory(data.length)
+                let inventoryGrab = data.flatMap((store) => store.shoes)
+            setInventory(inventoryGrab)
+            setTotalInventory(inventoryGrab.length) 
             })
         }
         else {

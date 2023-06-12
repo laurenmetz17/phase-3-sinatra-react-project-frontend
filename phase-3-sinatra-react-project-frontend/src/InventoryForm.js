@@ -7,7 +7,7 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
         style : "",
         price : '',
         color : "",
-        shoe_store_id: 0
+        shoe_store_id: 8
     })
 
     const storeItems = stores.map(store => (

@@ -25,16 +25,13 @@ function InventoryForm({inventory,setInventory,stores, setTotalInventory, totalI
             })
             .then(resp => resp.json())
             .then((newShoe) => {
-                setInventory([...inventory, newShoe]);
-                setTotalInventory(totalInventory+1)
-                
+                setInventory([...inventory, newShoe])      
             });
 
             e.target.children[1].value = ""
             e.target.children[3].value = ""
             e.target.children[5].value = ""
             e.target.children[7].value = ""
-            setTotalInventory(inventory.length)
     }
 
     function updateShoe(e){

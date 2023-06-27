@@ -22,7 +22,7 @@ function ShoeStores({stores, setStores, inventory, setInventory, totalInventory}
 
     return(
         <div>
-            <h2>Total Inventory: {inventoryItems.length} </h2>
+            <h2>Inventory Count: {inventoryItems.length} </h2>
             <h3>Stores:</h3>
             <select onChange={handleSelect} value={currentStore}>
                 <option value="All" name="all">All</option>

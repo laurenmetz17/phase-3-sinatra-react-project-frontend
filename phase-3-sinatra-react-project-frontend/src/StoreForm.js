@@ -43,7 +43,7 @@ function StoreForm({stores,setStores, inventory, setInventory, setTotalInventory
                 <input type="submit" value="Submit"  />
             </form>
             <h1>Add Inventory:</h1>
-            <InventoryForm inventory={inventory} setInventory={setInventory} stores={stores} setTotalInventory={setTotalInventory} totalInventory={totalInventory}/>
+            <InventoryForm inventory={inventory} setInventory={setInventory} stores={stores} totalInventory={totalInventory}/>
         </div>
 
 

@@ -1,47 +1,30 @@
 
-import {React, useEffect} from 'react';
+import {React, useEffect, useState} from 'react';
 import ShoeCard from "./ShoeCard";
 
-function ShoeStores({stores, setStores, inventory, setInventory, totalInventory, setTotalInventory}) {
+function ShoeStores({stores, setStores, inventory, setInventory, totalInventory}) {
 
-    useEffect(() => {
-        fetch("http://localhost:9292/shoe_stores")
-        .then(resp => resp.json())
-        .then(data => {
-            setStores(data)
-        })
-      },[]);
+    const [currentStore, setCurrentStore] = useState('All')
+    const filteredInventory = inventory.filter(shoe => 'All' == currentStore || currentStore == shoe.shoe_store_id )
 
-    function setSelect(event) {
-        if(event.target.value == "All") {
-            fetch("http://localhost:9292/shoe_stores")
-            .then(resp => resp.json())
-            .then(data => {
-                let inventoryGrab = data.flatMap((store) => store.shoes)
-            setInventory(inventoryGrab)
-            setTotalInventory(inventoryGrab.length) 
-            })
-        }
-        else {
-            let store = stores.filter(store => store.name == event.target.value)
-            setInventory(store[0].shoes)
-            setTotalInventory(store[0].shoes.length)
-        }
+    function handleSelect(e) {
+        setCurrentStore(e.target.value)
     }
 
     const storeItems = stores.map(store => (
-        <option key={store.name} value={store.name}>{store.name}</option>  
+        <option key={store.name} value={store.id}>{store.name}</option>  
     ))
 
-    const inventoryItems = inventory.map(shoe => (
-        <ShoeCard key={shoe.name} shoe={shoe} stores={stores} setInventory={setInventory} inventory={inventory} setTotalInventory={setTotalInventory} totalInventory={totalInventory}/>
-    ))
+    const inventoryItems = filteredInventory.map(shoe => {
+            return <ShoeCard key={shoe.name} shoe={shoe} stores={stores} setInventory={setInventory} inventory={inventory} totalInventory={totalInventory}/>
+        
+    })
 
     return(
         <div>
-            <h2>Total Inventory: {totalInventory} </h2>
+            <h2>Total Inventory: {inventoryItems.length} </h2>
             <h3>Stores:</h3>
-            <select onChange={setSelect}>
+            <select onChange={handleSelect} value={currentStore}>
                 <option value="All" name="all">All</option>
                 {storeItems}
             </select>
